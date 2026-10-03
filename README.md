@@ -11,6 +11,7 @@ Una carpeta por clase. Cada una es un proyecto de Godot independiente con el tra
 | `Clase 3 - Guardado de puntaje` | 28/08/2026 | Persistencia con `FileAccess`: guardar el puntaje máximo en `user://` |
 | `Clase 4 - Camara, audio, parallax y particulas` | 11/09/2026 | Camera2D que sigue al jugador, AudioManager y buses, Parallax2D y partículas |
 | `Clase 5 - Menu, niveles y jugador automatico` | 25/09/2026 | Nodos Control, menú principal, cambio de escena y un jugador que se maneja solo |
+| `Clase 6 - Animacion con AnimationPlayer` | 02/10/2026 | Animación por keyframes: la vaca va, come la planta y vuelve |
 
 Hecho en Godot 4.6. Para abrir una clase, importar la carpeta correspondiente como proyecto.
 
@@ -73,3 +74,19 @@ get_tree().get_first_node_in_group("manzanas")
 ```
 
 y chequea que no sea nulo: cuando ya no quedan manzanas, se va a una posición fija en la esquina.
+
+## Clase 6 — Animación con AnimationPlayer
+
+Proyecto aparte, sin scripts: toda la animación está hecha desde la línea de tiempo del `AnimationPlayer`, que es como se vio en clase.
+
+La animación `caminar` dura **20 segundos** y tiene tres pistas:
+
+| Pista | Propiedad | Qué hace |
+|---|---|---|
+| 0 | `Vaca:position` | Keyframes en 0, 8, 10 y 18 s: va del punto A al B, espera, y vuelve |
+| 1 | `Vaca:flip_h` | En 10 s se da vuelta para volver mirando hacia el otro lado |
+| 2 | `Planta:texture` | En 9 s cambia el sprite de la planta con flores al brote, para que se vea que se la comió |
+
+Las dos últimas pistas usan **update discreto** (): el valor salta de uno a otro en vez de interpolarse, que es lo que corresponde para un booleano y para una textura.
+
+Los sprites son los mismos tiles de Kenney Tiny Farm que vienen usándose desde la clase 2: la vaca es `tile_0120`, la planta entera `tile_0030` y el brote `tile_0029`. El pasto es propio.
