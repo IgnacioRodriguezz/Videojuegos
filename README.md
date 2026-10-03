@@ -87,6 +87,6 @@ La animación `caminar` dura **20 segundos** y tiene tres pistas:
 | 1 | `Vaca:flip_h` | En 10 s se da vuelta para volver mirando hacia el otro lado |
 | 2 | `Planta:texture` | En 9 s cambia el sprite de la planta con flores al brote, para que se vea que se la comió |
 
-Las dos últimas pistas usan **update discreto** (): el valor salta de uno a otro en vez de interpolarse, que es lo que corresponde para un booleano y para una textura.
+Las dos últimas pistas usan **update discreto** (`update = 1`): el valor salta de uno a otro en vez de interpolarse, que es lo que corresponde para un booleano y para una textura.
 
 Los sprites son los mismos tiles de Kenney Tiny Farm que vienen usándose desde la clase 2: la vaca es `tile_0120`, la planta entera `tile_0030` y el brote `tile_0029`. El pasto es propio.
