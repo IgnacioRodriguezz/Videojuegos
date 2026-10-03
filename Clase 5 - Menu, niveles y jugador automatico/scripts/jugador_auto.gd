@@ -29,7 +29,5 @@ func _physics_process(delta: float) -> void:
 	if position.y < posicion_manzana.y:
 		direccion.y = 1
 
-	direccion = direccion.normalized()
-
 	velocity = direccion * velocidad
 	move_and_slide()

@@ -5,7 +5,8 @@ var escena_manzana = load("res://escenas/manzana.tscn")
 
 func _ready() -> void:
 	Global.cargar()
-	actualizar_labels()
+	$CanvasLayer/Control/MarginContainer/HBoxContainer/LabelPuntos.text = "puntos: " + str(Global.puntos)
+	$CanvasLayer/Control/MarginContainer/HBoxContainer/LabelPuntosMax.text = "max: " + str(Global.max_puntos)
 
 	var nueva_manzana
 
@@ -23,14 +24,9 @@ func _process(delta: float) -> void:
 
 func sumar_punto():
 	Global.puntos += 1
+	$CanvasLayer/Control/MarginContainer/HBoxContainer/LabelPuntos.text = "puntos: " + str(Global.puntos)
 
 	if Global.puntos > Global.max_puntos:
 		Global.max_puntos = Global.puntos
+		$CanvasLayer/Control/MarginContainer/HBoxContainer/LabelPuntosMax.text = "max: " + str(Global.max_puntos)
 		Global.grabar()
-
-	actualizar_labels()
-
-
-func actualizar_labels():
-	$CanvasLayer/Control/MarginContainer/HBoxContainer/LabelPuntos.text = "puntos: " + str(Global.puntos)
-	$CanvasLayer/Control/MarginContainer/HBoxContainer/LabelPuntosMax.text = "max: " + str(Global.max_puntos)

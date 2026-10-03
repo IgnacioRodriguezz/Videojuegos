@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = fuerza_salto
 		ya_salto = true
 
-	var direccion = Input.get_axis("ui_left", "ui_right")
-	velocity.x = direccion * velocidad
+	var direccion = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	velocity.x = direccion.x * velocidad
 
 	move_and_slide()
